@@ -133,7 +133,6 @@ JUnit como artefatos.
 ## Última execução local
 
 ```
-Running 21 tests using 3 workers
-  18 passed
-  3 skipped   (jornada pela lupa — CT-01/CT-02/CT-08 — não roda no mobile: lupa fica no menu hambúrguer)
+Running 22 tests using 3 workers
+  22 passed   (desktop + mobile, sem skips)
 ```

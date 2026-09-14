@@ -31,12 +31,7 @@ test.describe('Fluxos alternativos e casos de exceção da pesquisa', () => {
   test('CT-08 | busca vazia pela lupa não quebra a aplicação @regression @exception @lupa', async ({
     homePage,
     searchResultsPage,
-  }, testInfo) => {
-    test.skip(
-      testInfo.project.name === 'mobile-chrome',
-      'Jornada pela lupa é validada no desktop.',
-    );
-
+  }) => {
     await homePage.open();
     await homePage.searchFor('');
 

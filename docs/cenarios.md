@@ -22,14 +22,14 @@ navegação para o artigo e paginação).
 
 | ID    | Cenário | Tipo | Projeto |
 |-------|---------|------|---------|
-| CT-01 | Busca por termo válido pela lupa retorna artigos relacionados | Caminho feliz | desktop |
-| CT-02 | Busca sem resultados exibe mensagem amigável e oferece nova busca | Borda / negativo | desktop |
+| CT-01 | Busca por termo válido pela lupa retorna artigos relacionados | Caminho feliz | desktop + mobile |
+| CT-02 | Busca sem resultados exibe mensagem amigável e oferece nova busca | Borda / negativo | desktop + mobile |
 | CT-03 | Busca é indiferente a maiúsculas/minúsculas | Regressão | desktop + mobile |
 | CT-04 | Abrir um resultado leva ao artigo correspondente | Integração de navegação | desktop + mobile |
-| CT-05 | Paginação preserva o termo e traz artigos distintos | Regressão | desktop |
+| CT-05 | Paginação preserva o termo e traz artigos distintos | Regressão | desktop + mobile |
 | CT-06 | Busca com acentos e espaços retorna resultados | Fluxo alternativo | desktop + mobile |
 | CT-07 | Termo com HTML/`<script>` é escapado e não executa | Exceção / segurança | desktop + mobile |
-| CT-08 | Busca vazia pela lupa não quebra a aplicação | Exceção | desktop |
+| CT-08 | Busca vazia pela lupa não quebra a aplicação | Exceção | desktop + mobile |
 | CT-09 | Nova busca a partir da página "nenhum resultado" | Fluxo alternativo | desktop + mobile |
 | CT-10 | Página além da última não retorna erro de servidor | Exceção | desktop + mobile |
 | CT-11 | Espaços ao redor do termo não impedem os resultados | Fluxo alternativo | desktop + mobile |
@@ -70,9 +70,9 @@ trazer artigos diferentes dos da página 1 (sem repetição).
   a mesma transição que o tema aplicaria (estilo inline na caixa) para seguir
   interagindo com o **formulário e o submit reais** do WordPress. Isso é um
   ponto de atenção de performance/JS que vale reportar ao time de front.
-- **No mobile a lupa fica dentro do menu hambúrguer** (fluxo de UI distinto);
-  por isso CT-01/CT-02 rodam no projeto desktop, e a cobertura mobile se dá pelos
-  cenários de deep link (CT-03/CT-04).
+- **A lupa é exercida em desktop e mobile.** O ícone de busca existe em ambos os
+  headers; o seletor mira a instância visível (`.astra-search-icon:visible`), já
+  que o tema mantém no DOM também a versão oculta do outro layout.
 
 
 ## Casos de exceção e fluxos alternativos (CT-06 a CT-11)

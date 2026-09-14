@@ -4,7 +4,7 @@ export abstract class BasePage {
   protected constructor(readonly page: Page) {}
 
   get searchIcon(): Locator {
-    return this.page.locator('.astra-search-icon').first();
+    return this.page.locator('.astra-search-icon:visible').first();
   }
 
   get searchOverlay(): Locator {

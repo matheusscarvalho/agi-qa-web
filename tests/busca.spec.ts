@@ -9,11 +9,7 @@ test.describe('Pesquisa de artigos do Blog do Agi', () => {
   test('CT-01 | busca por termo válido a partir da lupa retorna artigos relacionados @smoke @regression @lupa', async ({
     homePage,
     searchResultsPage,
-  }, testInfo) => {
-    test.skip(
-      testInfo.project.name === 'mobile-chrome',
-      'No mobile a lupa fica dentro do menu hambúrguer (fluxo de UI distinto); a jornada pela lupa é validada no desktop.',
-    );
+  }) => {
     const term = SEARCH_TERMS.valid;
 
     await test.step('pesquisar o termo pela lupa do cabeçalho', async () => {
@@ -49,11 +45,7 @@ test.describe('Pesquisa de artigos do Blog do Agi', () => {
   test('CT-02 | busca sem resultados exibe mensagem amigável e oferece nova pesquisa @regression @lupa', async ({
     homePage,
     searchResultsPage,
-  }, testInfo) => {
-    test.skip(
-      testInfo.project.name === 'mobile-chrome',
-      'No mobile a lupa fica dentro do menu hambúrguer (fluxo de UI distinto); a jornada pela lupa é validada no desktop.',
-    );
+  }) => {
     const term = SEARCH_TERMS.withoutResults;
 
     await test.step('pesquisar um termo inexistente', async () => {
