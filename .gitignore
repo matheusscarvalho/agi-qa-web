@@ -1,0 +1,26 @@
+# Dependências
+node_modules/
+
+# Saídas do Playwright
+playwright-report/
+blob-report/
+test-results/
+reports/
+.playwright/
+.cache/
+
+# Selenium/Java (módulo complementar)
+selenium-java/target/
+*.class
+
+# Ambiente
+.env
+.env.*
+
+# Editores / SO
+.idea/
+*.iml
+.vscode/
+.DS_Store
+*.log
+Thumbs.db

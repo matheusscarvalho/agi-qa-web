@@ -1,0 +1,32 @@
+{
+  "name": "agi-qa-web",
+  "version": "1.0.0",
+  "description": "Automacao de testes E2E da pesquisa de artigos do Blog do Agi",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:desktop": "playwright test --project=chromium-desktop",
+    "test:mobile": "playwright test --project=mobile-chrome",
+    "test:headed": "playwright test --project=chromium-desktop --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report playwright-report",
+    "typecheck": "tsc --noEmit",
+    "postinstall": "playwright install chromium",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:security": "playwright test --grep @security",
+    "test:exception": "playwright test --grep @exception",
+    "test:altflow": "playwright test --grep @altflow",
+    "test:lupa": "playwright test --grep @lupa"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.5.1",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}
