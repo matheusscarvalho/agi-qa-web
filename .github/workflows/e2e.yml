@@ -1,0 +1,58 @@
+name: E2E - Blog do Agi (Playwright)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      grep:
+        description: 'Tag para filtrar (@smoke, @regression, @security, @exception, @altflow, @lupa)'
+        default: '@regression'
+
+# Em PR roda só @smoke (rápido); em push/manual roda a tag escolhida (padrão @regression).
+env:
+  GREP: ${{ github.event.inputs.grep || (github.event_name == 'pull_request' && '@smoke' || '@regression') }}
+
+jobs:
+  e2e:
+    name: Playwright (${{ matrix.project }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [chromium-desktop, mobile-chrome]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar navegadores do Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Executar testes (${{ env.GREP }})
+        run: npx playwright test --project=${{ matrix.project }} --grep "${{ env.GREP }}"
+        env:
+          CI: 'true'
+
+      - name: Publicar relatório HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ matrix.project }}
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Publicar resultados JUnit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-${{ matrix.project }}
+          path: reports/junit-results.xml
+          retention-days: 14
