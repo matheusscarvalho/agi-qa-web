@@ -69,11 +69,36 @@ Os testes têm tags que permitem separar as execuções:
 
 Também é possível combinar: `npx playwright test --grep "@smoke|@security"`.
 
-Apontar para outro ambiente:
+### Ambientes de execução (dev / qa / prod)
+
+As configurações por ambiente ficam em [`environments/`](environments/), um
+arquivo `.env` por ambiente. Selecione com a variável `ENV` (padrão: `dev`):
+
+```bash
+ENV=qa npm test
+ENV=prod npm run test:smoke
+```
+
+Sobrepor pontualmente sem trocar de arquivo:
 
 ```bash
 BASE_URL=https://staging.blogdoagi.com.br npm test
 ```
+
+Precedência: variável exportada no shell > arquivo do `ENV` > padrão do código.
+Ajuste as URLs de `qa`/`prod` conforme os ambientes reais.
+
+## Qualidade (lint e formatação)
+
+```bash
+npm run typecheck      # checagem de tipos (TypeScript)
+npm run lint           # ESLint
+npm run format:check   # Prettier (checagem)
+npm run format         # Prettier (aplica)
+```
+
+Estes três passos também rodam no CI (job "Qualidade"). O módulo Selenium usa
+Spotless: `cd selenium-java && mvn spotless:check`.
 
 ## Relatórios
 
