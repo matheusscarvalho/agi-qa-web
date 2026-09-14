@@ -127,6 +127,7 @@ agi-qa-web/
 ├── tests/
 │   ├── busca.spec.ts           # CT-01..CT-04
 │   └── paginacao.spec.ts       # CT-05
+├── environments/               # dev.env, qa.env, prod.env (ENV=qa npm test)
 ├── docs/cenarios.md            # cenários e justificativa de priorização
 ├── selenium-java/              # módulo complementar Selenium + Java (Maven)
 └── .github/workflows/e2e.yml   # pipeline no GitHub Actions

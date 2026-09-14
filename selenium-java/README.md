@@ -14,7 +14,23 @@ Playwright (pasta raiz).
 cd selenium-java
 mvn test                       # headless
 mvn test -Dheadless=false      # com navegador visível
+```
+
+Este módulo **não** lê a pasta `environments/` do Playwright. A URL alvo é
+`https://blogdoagi.com.br` por padrão e pode ser sobreposta com `-DbaseUrl`:
+
+```bash
 mvn test -DbaseUrl=https://staging.blogdoagi.com.br
+```
+
+Para os ambientes `dev` / `qa` / `prod` do Playwright, use a raiz do repositório
+(`ENV=qa npm test`). Ver [`../README.md`](../README.md#ambientes-de-execução-dev--qa--prod).
+
+## Qualidade (formatação)
+
+```bash
+mvn spotless:check
+mvn spotless:apply
 ```
 
 ## Execução por tag (grupos JUnit)
