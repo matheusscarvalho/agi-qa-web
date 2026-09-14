@@ -20,13 +20,21 @@
     "test:security": "playwright test --grep @security",
     "test:exception": "playwright test --grep @exception",
     "test:altflow": "playwright test --grep @altflow",
-    "test:lupa": "playwright test --grep @lupa"
+    "test:lupa": "playwright test --grep @lupa",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.5.1",
-    "typescript": "^7.0.2"
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^9.1.2",
+    "prettier": "^3.9.6",
+    "typescript": "5.9",
+    "typescript-eslint": "^8.70.0"
   },
   "private": true
 }

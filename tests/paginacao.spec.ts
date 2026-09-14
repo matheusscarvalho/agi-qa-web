@@ -34,7 +34,9 @@ test.describe('Paginação dos resultados de pesquisa', () => {
       expect(secondPageTitles).not.toEqual(firstPageTitles);
 
       const repeated = secondPageTitles.filter((t) => firstPageTitles.includes(t));
-      expect(repeated, `Artigos repetidos entre as páginas: ${repeated.join(', ')}`).toHaveLength(0);
+      expect(repeated, `Artigos repetidos entre as páginas: ${repeated.join(', ')}`).toHaveLength(
+        0,
+      );
     });
   });
 });

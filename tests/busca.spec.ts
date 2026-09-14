@@ -72,7 +72,9 @@ test.describe('Pesquisa de artigos do Blog do Agi', () => {
     });
   });
 
-  test('CT-03 | busca é indiferente a maiúsculas e minúsculas @regression', async ({ searchResultsPage }) => {
+  test('CT-03 | busca é indiferente a maiúsculas e minúsculas @regression', async ({
+    searchResultsPage,
+  }) => {
     await searchResultsPage.openWithTerm(SEARCH_TERMS.valid);
     const lowerCaseTitles = await searchResultsPage.resultTitleTexts();
     expect(lowerCaseTitles.length).toBeGreaterThan(0);

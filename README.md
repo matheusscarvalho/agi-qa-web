@@ -15,13 +15,13 @@ Os dois cenários mais relevantes pedidos no desafio são **CT-01** (busca com
 resultados) e **CT-02** (busca sem resultados). A lista completa e a
 justificativa de priorização estão em [`docs/cenarios.md`](docs/cenarios.md).
 
-| ID    | Cenário |
-|-------|---------|
-| CT-01 | Busca por termo válido pela lupa retorna artigos relacionados |
-| CT-02 | Busca sem resultados exibe mensagem amigável e oferece nova busca |
-| CT-03 | Busca é indiferente a maiúsculas/minúsculas |
-| CT-04 | Abrir um resultado leva ao artigo correspondente |
-| CT-05 | Paginação preserva o termo e traz artigos distintos |
+| ID           | Cenário                                                                                                                                            |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CT-01        | Busca por termo válido pela lupa retorna artigos relacionados                                                                                      |
+| CT-02        | Busca sem resultados exibe mensagem amigável e oferece nova busca                                                                                  |
+| CT-03        | Busca é indiferente a maiúsculas/minúsculas                                                                                                        |
+| CT-04        | Abrir um resultado leva ao artigo correspondente                                                                                                   |
+| CT-05        | Paginação preserva o termo e traz artigos distintos                                                                                                |
 | CT-06..CT-11 | Fluxos alternativos e casos de exceção (acentos, XSS/escape, busca vazia, nova busca a partir de "sem resultados", página além da última, espaços) |
 
 ---
@@ -58,14 +58,14 @@ npm run test:ui       # modo interativo do Playwright
 
 Os testes têm tags que permitem separar as execuções:
 
-| Tag | Escopo | Comando |
-|-----|--------|---------|
-| `@smoke` | caminho crítico (rápido) | `npm run test:smoke` |
-| `@regression` | suíte completa | `npm run test:regression` |
-| `@security` | escape/XSS | `npm run test:security` |
-| `@exception` | casos de erro | `npm run test:exception` |
-| `@altflow` | fluxos alternativos | `npm run test:altflow` |
-| `@lupa` | jornada pela lupa | `npm run test:lupa` |
+| Tag           | Escopo                   | Comando                   |
+| ------------- | ------------------------ | ------------------------- |
+| `@smoke`      | caminho crítico (rápido) | `npm run test:smoke`      |
+| `@regression` | suíte completa           | `npm run test:regression` |
+| `@security`   | escape/XSS               | `npm run test:security`   |
+| `@exception`  | casos de erro            | `npm run test:exception`  |
+| `@altflow`    | fluxos alternativos      | `npm run test:altflow`    |
+| `@lupa`       | jornada pela lupa        | `npm run test:lupa`       |
 
 Também é possível combinar: `npx playwright test --grep "@smoke|@security"`.
 

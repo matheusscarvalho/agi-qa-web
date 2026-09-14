@@ -2,7 +2,9 @@ import { test, expect } from '@src/fixtures/pages.fixture';
 import { SEARCH_TERMS, NO_RESULTS_MESSAGE } from '@src/data/search-data';
 
 test.describe('Fluxos alternativos e casos de exceção da pesquisa', () => {
-  test('CT-06 | busca com acentos e espaços retorna resultados @regression @altflow', async ({ searchResultsPage }) => {
+  test('CT-06 | busca com acentos e espaços retorna resultados @regression @altflow', async ({
+    searchResultsPage,
+  }) => {
     await searchResultsPage.openWithTerm(SEARCH_TERMS.withSpecialChars);
 
     await searchResultsPage.assertLoadedFor(SEARCH_TERMS.withSpecialChars);
@@ -40,7 +42,9 @@ test.describe('Fluxos alternativos e casos de exceção da pesquisa', () => {
     await expect(searchResultsPage.pageTitle).toBeVisible();
   });
 
-  test('CT-09 | nova busca a partir da página "nenhum resultado" @regression @altflow', async ({ searchResultsPage }) => {
+  test('CT-09 | nova busca a partir da página "nenhum resultado" @regression @altflow', async ({
+    searchResultsPage,
+  }) => {
     await searchResultsPage.openWithTerm(SEARCH_TERMS.withoutResults);
     await expect(searchResultsPage.noResultsSection).toContainText(NO_RESULTS_MESSAGE);
 

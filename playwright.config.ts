@@ -1,4 +1,21 @@
 import { defineConfig, devices } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+// Carrega environments/<ENV>.env (ENV padrão: dev) sem dependência externa.
+// Variáveis já presentes no shell têm precedência sobre o arquivo.
+const ENV = process.env.ENV ?? 'dev';
+try {
+  const file = readFileSync(resolve(__dirname, 'environments', `${ENV}.env`), 'utf-8');
+  for (const line of file.split('\n')) {
+    const match = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+    if (match && process.env[match[1]] === undefined) {
+      process.env[match[1]] = match[2].trim();
+    }
+  }
+} catch {
+  // Sem arquivo para o ENV informado: segue com variáveis do shell/padrão.
+}
 
 export default defineConfig({
   testDir: './tests',
